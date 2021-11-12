@@ -58,10 +58,12 @@ public class PlayerController : MonoBehaviour
     public GameObject damageKick;
     public GameObject flyingKick;
 
-    public Transform attackPos;
-    public LayerMask enemy;
-    public float attackRange;
-    public int damage;
+    public Transform PunchPosObject;  // объект для удара рукой
+    public float PunchRange;
+    public Transform KickPosObject; // объект для удара ногой
+    public float KickRange;
+    public LayerMask enemy; // маска врага
+    public int damage; // наносимый урон
     
     private bool isAttacking = false; // атакуем ли мы сейчас
     private bool isCrouching = false; // в присиде ли    
@@ -160,12 +162,15 @@ public class PlayerController : MonoBehaviour
 
         }
 
-         if (sr.flipX == true) {
-            attackPos.transform.position = new Vector2(rb.position.x - 0.234999f, rb.position.y + 0.271f);
-         }
-         else if (sr.flipX == false) {
-            attackPos.transform.position = new Vector2(rb.position.x + 0.234999f, rb.position.y + 0.271f);
-         }
+        //поворот области нанесения урона в сторону персонажа
+        if (sr.flipX == true) {
+            PunchPosObject.transform.position = new Vector2(rb.position.x - 0.234999f, rb.position.y + 0.271f);
+            KickPosObject.transform.position = new Vector2(rb.position.x - 0.181f, rb.position.y + 0.247f);
+        }
+        else if (sr.flipX == false) {
+            PunchPosObject.transform.position = new Vector2(rb.position.x + 0.234999f, rb.position.y + 0.271f);
+            KickPosObject.transform.position = new Vector2(rb.position.x + 0.181f, rb.position.y + 0.247f);
+        }
     }
 
     public void Сontrol() {
@@ -308,7 +313,9 @@ public class PlayerController : MonoBehaviour
 
     private void OnDrawGizmosSelected() {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(attackPos.position, attackRange);
+        Gizmos.DrawWireSphere(PunchPosObject.position, PunchRange);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(KickPosObject.position, KickRange);
     }
 
     //Создаём Damage круг в зависимости от того, в какую сторону повёрнут персонаж
@@ -317,16 +324,11 @@ public class PlayerController : MonoBehaviour
         isAttacking = true;
         if(isAttacking) {
             State = States.punch;
-
-            Collider2D[] enemies = Physics2D.OverlapCircleAll(attackPos.position, attackRange, enemy);
-            // Collider2D[] enemies1 = Physics2D.OverlapCircleAll(attackPos.position, attackRange, enemy);
-            // Debug.Log(attackPos.position.x * -1f); // работает
             damage = 2;
+            Collider2D[] enemies = Physics2D.OverlapCircleAll(PunchPosObject.position, PunchRange, enemy);
             for (int i = 0; i < enemies.Length; i++) {
                     enemies[i].GetComponent<damagebleObject>().TakeDamage(damage);
             }
-            
-
         }
         Invoke("PunchOff", 0.4f);
     }
@@ -336,27 +338,33 @@ public class PlayerController : MonoBehaviour
         damage  = 0;
     }
 
-
     public void Kick() {
         //Debug.Log("нажато");
         isAttacking = true;
         if(isAttacking) {
             State = States.kick;
-        
-            if (sr.flipX == true) {
-                damageKick.GetComponent<SpriteRenderer>().flipX = true;
-                Instantiate(damageKick, new Vector2(transform.position.x - 0.304f, transform.position.y + 0.263f), Quaternion.identity);
-            } 
-            else if (sr.flipX == false) {
-                damageKick.GetComponent<SpriteRenderer>().flipX = false;
-                Instantiate(damageKick, new Vector2(transform.position.x + 0.304f, transform.position.y + 0.263f), Quaternion.identity);
+            damage = 2;
+            Collider2D[] enemies1 = Physics2D.OverlapCircleAll(KickPosObject.position, KickRange, enemy);
+            for (int i = 0; i < enemies1.Length; i++) {
+                    Debug.Log(enemies1[i]);
+                    enemies1[i].GetComponent<damagebleObject>().TakeDamage(damage);
             }
+            // if (sr.flipX == true) {
+            //     damageKick.GetComponent<SpriteRenderer>().flipX = true;
+            //     Instantiate(damageKick, new Vector2(transform.position.x - 0.304f, transform.position.y + 0.263f), Quaternion.identity);
+            // } 
+            // else if (sr.flipX == false) {
+            //     damageKick.GetComponent<SpriteRenderer>().flipX = false;
+            //     Instantiate(damageKick, new Vector2(transform.position.x + 0.304f, transform.position.y + 0.263f), Quaternion.identity);
+            // }
+
         }
         Invoke("KickOff", 0.5f);
     }
 
     private void KickOff() {
         isAttacking = false;
+        damage  = 0;
     }
 
     //удар в прыжке работает не идеально
@@ -370,10 +378,10 @@ public class PlayerController : MonoBehaviour
             State = States.flying_kick;
             if (sr.flipX == true) {
                 flyingKick.GetComponent<SpriteRenderer>().flipX = true;
-                Instantiate(flyingKick, new Vector2(transform.position.x - 0.26013361f, transform.position.y + 0.220838f), Quaternion.identity);
+                // Instantiate(flyingKick, new Vector2(transform.position.x - 0.26013361f, transform.position.y + 0.220838f), Quaternion.identity);
             } else if (sr.flipX == false) {
                 flyingKick.GetComponent<SpriteRenderer>().flipX = false;
-                Instantiate(flyingKick, new Vector2(transform.position.x + 0.26013361f, transform.position.y + 0.220838f), Quaternion.identity);
+                // Instantiate(flyingKick, new Vector2(transform.position.x + 0.26013361f, transform.position.y + 0.220838f), Quaternion.identity);
                 // Destroy(flyingKick, 0.15f);
             }
             // -0.8656384 1.713973
