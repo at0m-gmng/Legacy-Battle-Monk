@@ -58,10 +58,11 @@ public class PlayerController : MonoBehaviour
     public GameObject damageKick;
     public GameObject flyingKick;
 
-    // public Transform attackPoint;
-    // public float attackRange = 0.5f;
-    // public LayerMask enemyLayers;
-
+    public Transform attackPos;
+    public LayerMask enemy;
+    public float attackRange;
+    public int damage;
+    
     private bool isAttacking = false; // атакуем ли мы сейчас
     private bool isCrouching = false; // в присиде ли    
 
@@ -93,7 +94,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update() {
         if ((isGrounded || isGroundedStatic) && !isAttacking ) {
-            // Debug.Log("Есть апдейт");
+            // Debug.Log("Есть апдейт");s
             //isAttacking = false;
             State = States.idle;
         }
@@ -158,7 +159,13 @@ public class PlayerController : MonoBehaviour
             }
 
         }
-        
+
+         if (sr.flipX == true) {
+            attackPos.transform.position = new Vector2(rb.position.x - 0.234999f, rb.position.y + 0.271f);
+         }
+         else if (sr.flipX == false) {
+            attackPos.transform.position = new Vector2(rb.position.x + 0.234999f, rb.position.y + 0.271f);
+         }
     }
 
     public void Сontrol() {
@@ -298,28 +305,37 @@ public class PlayerController : MonoBehaviour
             SceneManager.LoadScene(index); 
     }
 
+
+    private void OnDrawGizmosSelected() {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(attackPos.position, attackRange);
+    }
+
     //Создаём Damage круг в зависимости от того, в какую сторону повёрнут персонаж
     public void Punch() {
         //Debug.Log("нажато");
         isAttacking = true;
         if(isAttacking) {
             State = States.punch;
-        
-            if (sr.flipX == true) {
-                Damage.GetComponent<SpriteRenderer>().flipX = true;
-                Instantiate(Damage, new Vector2(transform.position.x - 0.3f, transform.position.y + 0.27f), Quaternion.identity);
-            } 
-            else if (sr.flipX == false) {
-                Damage.GetComponent<SpriteRenderer>().flipX = false;
-                Instantiate(Damage, new Vector2(transform.position.x + 0.3f, transform.position.y + 0.27f), Quaternion.identity);
+
+            Collider2D[] enemies = Physics2D.OverlapCircleAll(attackPos.position, attackRange, enemy);
+            // Collider2D[] enemies1 = Physics2D.OverlapCircleAll(attackPos.position, attackRange, enemy);
+            // Debug.Log(attackPos.position.x * -1f); // работает
+            damage = 2;
+            for (int i = 0; i < enemies.Length; i++) {
+                    enemies[i].GetComponent<damagebleObject>().TakeDamage(damage);
             }
+            
+
         }
         Invoke("PunchOff", 0.4f);
     }
 
     private void PunchOff() {
         isAttacking = false;
+        damage  = 0;
     }
+
 
     public void Kick() {
         //Debug.Log("нажато");
@@ -343,18 +359,6 @@ public class PlayerController : MonoBehaviour
         isAttacking = false;
     }
 
-    // void Attack() {
-    //     Collider2D[] flyKick = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
-
-    // }
-
-    // void OnDrawGizmosSelected() {
-    //     if (attackPoint == null)
-    //         return;
-
-    //     Gizmos.DrawWireSphere(attackPoint.position, attackRange);    
-    // }
-   
     //удар в прыжке работает не идеально
     //из-за того что объекты осязаемы персонаж затормаживается в воздухе
     //если они быстро не исчезают

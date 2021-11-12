@@ -7,9 +7,10 @@ public class Wizard : MonoBehaviour
     public GameObject Fireball;
     SpriteRenderer sr;
     Animator anim;
+    public int damage;
 
     bool attack = false; //игрок в зоне атаки
-    [SerializeField] private int lives = 2;
+    [SerializeField] public static int lives = 2;
 
     private void Start() {
         sr = GetComponent<SpriteRenderer>();
@@ -34,7 +35,6 @@ public class Wizard : MonoBehaviour
         //if () {
         sr.material.color = new Color(1f, 1f, 1f);
         //}
-
     }
 
     private void OnTriggerStay2D(Collider2D collision) {
@@ -47,21 +47,16 @@ public class Wizard : MonoBehaviour
     }
     
     // Уничтожаем Wizard при касании с Damage кругом
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision.gameObject.tag == "Damage") {
-            //попробовать тег заменить на name и имя объекта
-            sr.material.color = new Color(1f, 0f, 0f);
-            lives-=2;
-            sr.material.color = new Color(1f, 0f, 0f);
-        }
+    // private void OnCollisionEnter2D(Collision2D collision)
+    // {
+        // if(collision.gameObject.tag == "Damage") {
+        //     //попробовать тег заменить на name и имя объекта
+        //     sr.material.color = new Color(1f, 0f, 0f);
+        //     lives-=2;
+        //     sr.material.color = new Color(1f, 0f, 0f);
+        // }
 
-        if ( lives < 1) {
-            //sr.material.color = new Color(1f, 1f, 1f);
-            anim.SetInteger("Wizard", 2);
-            Destroy(gameObject, 0.4f);
-        }
-    }
+    // }
 
     // public void TakeDamage () {
     //     sr.material.color = new Color(1f, 0f, 0f);
@@ -92,5 +87,14 @@ public class Wizard : MonoBehaviour
         // if (attack == false) {
         //     anim.SetInteger("Wizard", 0);
         // }
+    }
+
+    public void Die() {
+        if ( lives < 1) {
+            // sr.material.color = new Color(1f, 0f, 0f);
+            anim.SetInteger("Wizard", 2);
+            // sr.material.color = new Color(1f, 0f, 0f);
+            Destroy(gameObject, 0.4f);
+        }
     }
 }

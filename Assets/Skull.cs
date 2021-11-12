@@ -11,7 +11,8 @@ public class Skull : MonoBehaviour
     float maxDistance;
     float minDistance;
     int speed = 1;
-    private int lives = 2;
+    [SerializeField]  public static int lives = 2;
+    public int damage;
 
     private void Start() {
         sr = GetComponent<SpriteRenderer>();
@@ -39,11 +40,15 @@ public class Skull : MonoBehaviour
             speed = -speed;
             sr.flipX = !sr.flipX;
         }
-        if (collision.gameObject.tag == "Damage"){
-            sr.material.color = new Color(1f, 0f, 0f);
-            lives-=2;
-        }
+        // if (collision.gameObject.tag == "Damage"){
+        //     sr.material.color = new Color(1f, 0f, 0f);
+        //     lives-=2;
+        // }
 
+        
+    }
+    
+    public void Die() {
         if ( lives < 1) {
             anim.SetInteger("Skull", 1);
             speed = 0;

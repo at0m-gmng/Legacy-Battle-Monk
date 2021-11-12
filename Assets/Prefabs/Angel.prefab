@@ -12,10 +12,11 @@ GameObject:
   - component: {fileID: 7564985775951221988}
   - component: {fileID: 7564985775951221987}
   - component: {fileID: 7564985775951222009}
+  - component: {fileID: 5694641141064248734}
   - component: {fileID: 7564985775951222008}
   - component: {fileID: 7564985775951221991}
   - component: {fileID: 7564985775951221990}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Angel
   m_TagString: Boss
   m_Icon: {fileID: 0}
@@ -119,6 +120,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lives: 4
+--- !u!114 &5694641141064248734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7564985775951221986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05e24313432f29a42a733a644c7155f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lives: 0
+  damage: 0
+  dieWizard: {fileID: 0}
+  dieSkull: {fileID: 0}
+  dieAngel: {fileID: 7564985775951222009}
 --- !u!70 &7564985775951222008
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

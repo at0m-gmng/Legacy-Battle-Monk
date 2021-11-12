@@ -12,6 +12,7 @@ TagManager:
   - Wizard
   - Boss
   - gold
+  - Punch
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - Damage
   - Character
   - GroundStatic
-  - 
+  - Enemy
   - 
   - 
   - 

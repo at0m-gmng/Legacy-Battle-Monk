@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 9192420476569969342}
   - component: {fileID: 6592314402269096739}
   - component: {fileID: 7984701488456058096}
+  - component: {fileID: 5078645437912958242}
   - component: {fileID: 4386618076850046877}
   - component: {fileID: 3205787935633883688}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BurningSkull
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -118,6 +119,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distance: 2
+  damage: 0
+--- !u!114 &5078645437912958242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5686607268187504078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05e24313432f29a42a733a644c7155f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lives: 0
+  damage: 0
+  dieWizard: {fileID: 0}
+  dieSkull: {fileID: 7984701488456058096}
+  dieAngel: {fileID: 0}
 --- !u!70 &4386618076850046877
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

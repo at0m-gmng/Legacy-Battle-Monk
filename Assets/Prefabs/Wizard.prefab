@@ -15,9 +15,10 @@ GameObject:
   - component: {fileID: 6763857185316935306}
   - component: {fileID: 6763857185316935317}
   - component: {fileID: 6763857185316935311}
-  m_Layer: 0
+  - component: {fileID: 1941378568002462420}
+  m_Layer: 10
   m_Name: Wizard
-  m_TagString: Untagged
+  m_TagString: Wizard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -183,4 +184,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Fireball: {fileID: 8836918766831488609, guid: 396e8d8d308ba5f488a0d60b0dc27801,
     type: 3}
-  lives: 2
+  damage: 0
+--- !u!114 &1941378568002462420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6763857185316935316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05e24313432f29a42a733a644c7155f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lives: 0
+  damage: 0
+  dieWizard: {fileID: 6763857185316935311}
