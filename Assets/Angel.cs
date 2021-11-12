@@ -33,12 +33,6 @@ public class Angel : MonoBehaviour
         }
     }
     
-    // private void OnCollisionEnter2D(Collision2D collision) {
-    //     if(collision.gameObject.tag == "Damage") {
-    //         sr.material.color = new Color(1f, 0f, 0f);
-    //         lives-=2;
-    //         Debug.Log("Angel lives = " + lives); 
-    //     } 
     public void Die() {
         if (lives < 1) {
             attack = false; // зануляем атаку, чтобы анимация атаки не мешала анимации смерти

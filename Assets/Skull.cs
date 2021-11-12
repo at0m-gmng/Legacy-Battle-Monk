@@ -40,12 +40,6 @@ public class Skull : MonoBehaviour
             speed = -speed;
             sr.flipX = !sr.flipX;
         }
-        // if (collision.gameObject.tag == "Damage"){
-        //     sr.material.color = new Color(1f, 0f, 0f);
-        //     lives-=2;
-        // }
-
-        
     }
     
     public void Die() {

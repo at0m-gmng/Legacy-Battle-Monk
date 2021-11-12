@@ -82,6 +82,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &2398791684238714885
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3453939351302985728}
+  m_Layer: 0
+  m_Name: flyKickObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3453939351302985728
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2398791684238714885}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.196, y: 0.245, z: -0.033081606}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3692015068280233773}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3692015068280233774
 GameObject:
   m_ObjectHideFlags: 0
@@ -118,6 +148,7 @@ Transform:
   - {fileID: 8090743764322751006}
   - {fileID: 2812779425465956419}
   - {fileID: 5551353498555485726}
+  - {fileID: 3453939351302985728}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -225,6 +256,8 @@ MonoBehaviour:
   PunchRange: 0.12
   KickPosObject: {fileID: 5551353498555485726}
   KickRange: 0.25
+  FlyKickPosObject: {fileID: 3453939351302985728}
+  FlyKickRange: 0.14
   enemy:
     serializedVersion: 2
     m_Bits: 1024

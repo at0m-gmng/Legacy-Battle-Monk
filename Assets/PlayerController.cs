@@ -62,6 +62,8 @@ public class PlayerController : MonoBehaviour
     public float PunchRange;
     public Transform KickPosObject; // объект для удара ногой
     public float KickRange;
+    public Transform FlyKickPosObject; // объект для удара ногой
+    public float FlyKickRange;
     public LayerMask enemy; // маска врага
     public int damage; // наносимый урон
     
@@ -166,10 +168,12 @@ public class PlayerController : MonoBehaviour
         if (sr.flipX == true) {
             PunchPosObject.transform.position = new Vector2(rb.position.x - 0.234999f, rb.position.y + 0.271f);
             KickPosObject.transform.position = new Vector2(rb.position.x - 0.181f, rb.position.y + 0.247f);
+            FlyKickPosObject.transform.position = new Vector2(rb.position.x - 0.196f, rb.position.y + 0.245f);
         }
         else if (sr.flipX == false) {
             PunchPosObject.transform.position = new Vector2(rb.position.x + 0.234999f, rb.position.y + 0.271f);
             KickPosObject.transform.position = new Vector2(rb.position.x + 0.181f, rb.position.y + 0.247f);
+            FlyKickPosObject.transform.position = new Vector2(rb.position.x + 0.196f, rb.position.y + 0.245f);
         }
     }
 
@@ -316,6 +320,8 @@ public class PlayerController : MonoBehaviour
         Gizmos.DrawWireSphere(PunchPosObject.position, PunchRange);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(KickPosObject.position, KickRange);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(FlyKickPosObject.position, FlyKickRange);
     }
 
     //Создаём Damage круг в зависимости от того, в какую сторону повёрнут персонаж
@@ -346,18 +352,8 @@ public class PlayerController : MonoBehaviour
             damage = 2;
             Collider2D[] enemies1 = Physics2D.OverlapCircleAll(KickPosObject.position, KickRange, enemy);
             for (int i = 0; i < enemies1.Length; i++) {
-                    Debug.Log(enemies1[i]);
                     enemies1[i].GetComponent<damagebleObject>().TakeDamage(damage);
             }
-            // if (sr.flipX == true) {
-            //     damageKick.GetComponent<SpriteRenderer>().flipX = true;
-            //     Instantiate(damageKick, new Vector2(transform.position.x - 0.304f, transform.position.y + 0.263f), Quaternion.identity);
-            // } 
-            // else if (sr.flipX == false) {
-            //     damageKick.GetComponent<SpriteRenderer>().flipX = false;
-            //     Instantiate(damageKick, new Vector2(transform.position.x + 0.304f, transform.position.y + 0.263f), Quaternion.identity);
-            // }
-
         }
         Invoke("KickOff", 0.5f);
     }
@@ -376,43 +372,28 @@ public class PlayerController : MonoBehaviour
         isAttacking = true;
         if(isAttacking) {
             State = States.flying_kick;
-            if (sr.flipX == true) {
-                flyingKick.GetComponent<SpriteRenderer>().flipX = true;
-                // Instantiate(flyingKick, new Vector2(transform.position.x - 0.26013361f, transform.position.y + 0.220838f), Quaternion.identity);
-            } else if (sr.flipX == false) {
-                flyingKick.GetComponent<SpriteRenderer>().flipX = false;
-                // Instantiate(flyingKick, new Vector2(transform.position.x + 0.26013361f, transform.position.y + 0.220838f), Quaternion.identity);
-                // Destroy(flyingKick, 0.15f);
+            damage = 2;
+            Collider2D[] enemies2 = Physics2D.OverlapCircleAll(FlyKickPosObject.position, FlyKickRange, enemy);
+            for (int i = 0; i < enemies2.Length; i++) {
+                    enemies2[i].GetComponent<damagebleObject>().TakeDamage(damage);
             }
-            // -0.8656384 1.713973
-            // -0.6478877 1.604169
-            // -0.433  1.828
-            // -0,214887 -0,223831
-
-            //-0.9175339 1.827993
-            //-0.963     1.825
-            // -0,04524661   0,002993
-            
         }
         Invoke("Flying_kickOff", 0.2f);
     }
 
-
-
     private void Flying_kickOff() {
         isAttacking = false;
+        damage = 0;
     }
 
     private void LevelEnding() {
         if(!GameObject.Find("Angel") ) {
             NextLevel();
         } 
-
     }
 
     public void NextLevel() {
         levelEnding.SetActive(true);
         Time.timeScale = 0;
     }
-
 }
