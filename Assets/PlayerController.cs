@@ -11,7 +11,8 @@ public enum States {
     punch,
     kick,
     crouch,
-    flying_kick
+    flying_kick,
+    crouch_kick
 }
 
 public class PlayerController : MonoBehaviour
@@ -64,6 +65,8 @@ public class PlayerController : MonoBehaviour
     public float KickRange;
     public Transform FlyKickPosObject; // объект для удара ногой
     public float FlyKickRange;
+    public Transform CrouchKickPosObject; // объект для удара ногой
+    public float CrouchKickRange;
     public LayerMask enemy; // маска врага
     public int damage; // наносимый урон
     
@@ -114,36 +117,43 @@ public class PlayerController : MonoBehaviour
             }
         } else {
             if(Input.GetButton("Horizontal") && !isCrouching)
-                Run();          
-            if(Input.GetButton("Vertical") && crouchCounter==0) {
-                Crouch();
+                Run(); 
+         
+            if(Input.GetButton("Vertical") && crouchCounter==0) {    
+                poseStand.enabled = false;
+                poseCrouch.enabled = true;
+                isCrouching = true;
+                if(Input.GetButtonDown("Fire2")) { // работает, но анимация срабатывает мгновенно
+                    Crouch_kick();             // костыль написать GetButton
+                } else if (!isAttacking) {
+                    State = States.crouch;  
+                }
                 // Debug.Log(crouchCounter);                
-            } 
+            }
+
             if(Input.GetButtonUp("Vertical")) {
                 crouchCounter = 1;
                 // Debug.Log(crouchCounter);
                 poseStand.enabled = true;
                 poseCrouch.enabled = false;
                 isCrouching = false;
-                Invoke("Reset_crouch", 0.2f);
+                Invoke("Reset_crouch", 0.2f); // будет влиять на скорость проваливания сквозь платформы
             }
             if (Input.GetButtonDown("Vertical") && crouchCounter==1)
                 Down();
             if(Input.GetButtonDown("Jump")) {
                 Jump();
             }
-                
-            // if(Input.GetButtonDown("Jump") && Input.GetButtonDown("Fire2")) {
-            //     // Flying_kick();
-            //     State = States.flying_kick;
-            // }
             if ((isGrounded || isGroundedStatic) && Input.GetButtonDown("Fire1"))
                 Punch();
-            if ((isGrounded || isGroundedStatic) && Input.GetButtonDown("Fire2")) 
+            if ((isGrounded || isGroundedStatic) && Input.GetButtonDown("Fire2") && !isCrouching) 
                 Kick();
             if (Input.GetButtonDown("Cancel")) {
                 pause.SetActive(true);
                 Time.timeScale = 0;
+            }
+            if (!isGroundedStatic && !isGrounded && Input.GetButton("Fire2")) {
+                Flying_kick();   
             }   
         }
 
@@ -169,11 +179,13 @@ public class PlayerController : MonoBehaviour
             PunchPosObject.transform.position = new Vector2(rb.position.x - 0.234999f, rb.position.y + 0.271f);
             KickPosObject.transform.position = new Vector2(rb.position.x - 0.181f, rb.position.y + 0.247f);
             FlyKickPosObject.transform.position = new Vector2(rb.position.x - 0.196f, rb.position.y + 0.245f);
+            CrouchKickPosObject.transform.position = new Vector2(rb.position.x - 0.234f, rb.position.y + 0.155f);
         }
         else if (sr.flipX == false) {
             PunchPosObject.transform.position = new Vector2(rb.position.x + 0.234999f, rb.position.y + 0.271f);
             KickPosObject.transform.position = new Vector2(rb.position.x + 0.181f, rb.position.y + 0.247f);
             FlyKickPosObject.transform.position = new Vector2(rb.position.x + 0.196f, rb.position.y + 0.245f);
+            CrouchKickPosObject.transform.position = new Vector2(rb.position.x + 0.234f, rb.position.y + 0.155f);
         }
     }
 
@@ -226,12 +238,11 @@ public class PlayerController : MonoBehaviour
         Physics2D.IgnoreLayerCollision(6, 8, false);
     }
 
-    private void Crouch() {
-        State = States.crouch;
-        isCrouching = true;
-        poseStand.enabled = false;
-        poseCrouch.enabled = true;
-    }
+    // private void Crouch() {
+    //     isCrouching = true;
+    //     poseStand.enabled = false;
+    //     poseCrouch.enabled = true;
+    // }
 
     private void Reset_crouch() {
         if (crouchCounter == 1) {
@@ -247,30 +258,13 @@ public class PlayerController : MonoBehaviour
 
         Reset_crouch();
     }
-    // x -0.025 ; y -0.3 ; rad 0.08
-
-    //public bool Ground;
-    // private void ChechGround() {
-    //     Collider2D[] collider = Physics2D.OverlapCircleAll(transform.position, 0.08f);
-    //     isGrounded = collider.Length > 1;
-    //     if(!isGrounded) 
-    //         State = States.jump; 
-    // }
-
 
     private void ChechGround() {
         isGrounded = Physics2D.OverlapCircle(groungCheck.position, 0.08f, Ground);
         isGroundedStatic = Physics2D.OverlapCircle(groungCheck.position, 0.08f, GroundStatic);
         if(!isGroundedStatic && !isGrounded) {
             State = States.jump;  
-            // Flying_kick(); 
-        } 
-        if (!isGroundedStatic && !isGrounded && Input.GetButton("Fire2")) {
-            // State = States.flying_kick;
-            // Debug.Log("удар в прыжке");
-            Flying_kick();   
         }
-        // Flying_kickOff();
         // Debug.Log("на платформе " + isGrounded + " на земле " + isGroundedStatic + " в присяде " + isCrouching + " персонаж атакует " + isAttacking);
     }
 
@@ -326,6 +320,8 @@ public class PlayerController : MonoBehaviour
         Gizmos.DrawWireSphere(KickPosObject.position, KickRange);
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(FlyKickPosObject.position, FlyKickRange);
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(CrouchKickPosObject.position, CrouchKickRange);
     }
 
     //удар рукой
@@ -349,6 +345,7 @@ public class PlayerController : MonoBehaviour
 
     //удар ногой
     public void Kick() {
+        Debug.Log("пинок ");
         isAttacking = true;
         if(isAttacking) {
             State = States.kick;
@@ -381,6 +378,26 @@ public class PlayerController : MonoBehaviour
     }
 
     private void Flying_kickOff() {
+        isAttacking = false;
+        damage = 0;
+    }
+
+    //удар в присяде 
+    public void Crouch_kick() {
+        Debug.Log("пинок в присяде");
+        isAttacking = true;
+        if(isAttacking) {
+            State = States.crouch_kick;
+            damage = 2;
+            Collider2D[] enemies3 = Physics2D.OverlapCircleAll(CrouchKickPosObject.position, CrouchKickRange, enemy);
+            for (int i = 0; i < enemies3.Length; i++) {
+                    enemies3[i].GetComponent<damagebleObject>().TakeDamage(damage);
+            }
+        }
+        Invoke("Crouch_kickOff", 0.4f);
+    }
+
+    private void Crouch_kickOff() {
         isAttacking = false;
         damage = 0;
     }
