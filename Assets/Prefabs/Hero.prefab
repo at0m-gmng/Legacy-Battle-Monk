@@ -262,8 +262,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   damage: 2
-  poseStand: {fileID: 0}
-  poseCrouch: {fileID: 0}
+  poseStand: {fileID: 6798794359857168993}
+  poseCrouch: {fileID: 6139877883904067470}
 --- !u!70 &6139877883904067470
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

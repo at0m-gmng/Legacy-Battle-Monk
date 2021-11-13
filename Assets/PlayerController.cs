@@ -92,11 +92,11 @@ public class PlayerController : MonoBehaviour
 
 
     private void FixedUpdate() {
-        ChechGround();
-        LevelEnding();
     }
 
     private void Update() {
+        ChechGround();
+        LevelEnding();
         if ((isGrounded || isGroundedStatic) && !isAttacking ) {
             // Debug.Log("Есть апдейт");s
             //isAttacking = false;
@@ -236,6 +236,7 @@ public class PlayerController : MonoBehaviour
     private void Reset_crouch() {
         if (crouchCounter == 1) {
             crouchCounter = 0;
+            isCrouching = false; // была добавлена из-за того, что после проскальзывания сквозь платформы персонаж не мог ходить
             // Debug.Log(crouchCounter);
         }
     }
@@ -245,8 +246,6 @@ public class PlayerController : MonoBehaviour
             rb.velocity = Vector2.up * jumpForce;
 
         Reset_crouch();
-
-
     }
     // x -0.025 ; y -0.3 ; rad 0.08
 
@@ -272,6 +271,7 @@ public class PlayerController : MonoBehaviour
             Flying_kick();   
         }
         // Flying_kickOff();
+        // Debug.Log("на платформе " + isGrounded + " на земле " + isGroundedStatic + " в присяде " + isCrouching + " персонаж атакует " + isAttacking);
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
@@ -279,9 +279,7 @@ public class PlayerController : MonoBehaviour
             lives--;
             Debug.Log("Player lives = " + lives);
         }    
-        if(collision.gameObject.tag == "gold") {
-            Collect.score +=150;
-        }
+
         if (lives < 1) {
                 //Destroy(gameObject, 0.5f);
             Debug.Log("Вы мертвы");
@@ -289,6 +287,12 @@ public class PlayerController : MonoBehaviour
             SetPause();
         }
                 
+    }
+
+    private void OnTriggerStay2D(Collider2D collision) {
+        if(collision.gameObject.tag == "gold") {
+            Collect.score +=150;
+        }
     }
 
     private void Awake() {
@@ -314,7 +318,7 @@ public class PlayerController : MonoBehaviour
             SceneManager.LoadScene(index); 
     }
 
-
+    //отрисовка области поражения
     private void OnDrawGizmosSelected() {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(PunchPosObject.position, PunchRange);
@@ -324,9 +328,8 @@ public class PlayerController : MonoBehaviour
         Gizmos.DrawWireSphere(FlyKickPosObject.position, FlyKickRange);
     }
 
-    //Создаём Damage круг в зависимости от того, в какую сторону повёрнут персонаж
+    //удар рукой
     public void Punch() {
-        //Debug.Log("нажато");
         isAttacking = true;
         if(isAttacking) {
             State = States.punch;
@@ -344,8 +347,8 @@ public class PlayerController : MonoBehaviour
         damage  = 0;
     }
 
+    //удар ногой
     public void Kick() {
-        //Debug.Log("нажато");
         isAttacking = true;
         if(isAttacking) {
             State = States.kick;
@@ -363,12 +366,8 @@ public class PlayerController : MonoBehaviour
         damage  = 0;
     }
 
-    //удар в прыжке работает не идеально
-    //из-за того что объекты осязаемы персонаж затормаживается в воздухе
-    //если они быстро не исчезают
-    //+ невозможно заменить на capsuleCollider (для большей области поражения)
+    //удар в прыжке 
     public void Flying_kick() {
-        //Debug.Log("нажато");
         isAttacking = true;
         if(isAttacking) {
             State = States.flying_kick;

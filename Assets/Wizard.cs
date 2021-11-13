@@ -51,7 +51,6 @@ public class Wizard : MonoBehaviour
 
     public void Die() {
         if ( lives < 1) {
-            attack = false;
             // sr.material.color = new Color(1f, 0f, 0f);
             anim.SetInteger("Wizard", 2);
             // sr.material.color = new Color(1f, 0f, 0f);
