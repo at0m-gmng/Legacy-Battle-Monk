@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask Ground;
     public LayerMask GroundStatic;
 
-    private static bool keyboard = false; //клавиатура не подкл, подкл джойстик
+    private static bool keyboard = true; //клавиатура не подкл, подкл джойстик
     [SerializeField] GameObject androidControl;
     public Joystick joystick;
 
@@ -110,24 +110,24 @@ public class PlayerController : MonoBehaviour
         if (!keyboard) {
             if(!isAttacking && ((joystick.Horizontal > 0.2f) || (joystick.Horizontal < -0.2f) ) && !isCrouching)
                 Run();    
-            if(!isAttacking && (isGrounded || isGroundedStatic) && (joystick.Vertical > 0.3f))
+            if(joystick.Vertical > 0.3f)
                 Jump();
             if(!isAttacking && (isGrounded || isGroundedStatic) && (joystick.Vertical < -0.2f) && crouchCounter==0) {
                 isCrouching = true;
                 poseStand.enabled = false;
                 poseCrouch.enabled = true;
-                //Debug.Log("Срабатывает");
-                // Down();
-                // if (!isAttacking) {
+                // Down(); //не забыть добавить
                 State = States.crouch;
-                // }      
             }
-            if((joystick.Vertical > -0.2f) && (joystick.Vertical < 0.0f) ) {
+            if((joystick.Vertical > -0.1f) ) {
+                crouchCounter = 1;
                 isCrouching = false;
                 poseStand.enabled = true;
                 poseCrouch.enabled = false;
-                Invoke("Reset_crouch", 0.2f);
+                Invoke("Reset_crouch", 0.3f);
             }
+            if ((joystick.Vertical < -0.2f) && crouchCounter==1)
+                Down();
             // if((isGrounded || isGroundedStatic) && (joystick.Vertical < -0.3f))
             //     ();
         } else {
@@ -279,8 +279,8 @@ public class PlayerController : MonoBehaviour
     private void ChechGround() {
         isGrounded = Physics2D.OverlapCircle(groungCheck.position, 0.08f, Ground);
         isGroundedStatic = Physics2D.OverlapCircle(groungCheck.position, 0.08f, GroundStatic);
-        if(!isGroundedStatic && !isGrounded) {
-            State = States.jump;  
+        if(!isGroundedStatic && !isGrounded && !isAttacking) {
+            State = States.jump;
         }
         // Debug.Log("на платформе " + isGrounded + " на земле " + isGroundedStatic + " в присяде " + isCrouching + " персонаж атакует " + isAttacking);
     }
@@ -362,7 +362,7 @@ public class PlayerController : MonoBehaviour
 
     //удар ногой
     public void Kick() {
-        Debug.Log("пинок ");
+        // Debug.Log("пинок ");
         isAttacking = true;
         if(isAttacking) {
             State = States.kick;
@@ -382,8 +382,9 @@ public class PlayerController : MonoBehaviour
 
     //удар в прыжке 
     public void Flying_kick() {
+        Debug.Log("удар в прыжке");
         isAttacking = true;
-        if(isAttacking) {
+        if(isAttacking && !isGroundedStatic && !isGrounded) {
             State = States.flying_kick;
             damage = 2;
             Collider2D[] enemies2 = Physics2D.OverlapCircleAll(FlyKickPosObject.position, FlyKickRange, enemy);
@@ -401,7 +402,7 @@ public class PlayerController : MonoBehaviour
 
     //удар в присяде 
     public void Crouch_kick() {
-        Debug.Log("пинок в присяде");
+        // Debug.Log("пинок в присяде");
         isAttacking = true;
         if(isAttacking) {
             State = States.crouch_kick;
