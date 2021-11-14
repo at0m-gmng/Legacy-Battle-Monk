@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask Ground;
     public LayerMask GroundStatic;
 
-    private static bool keyboard = true; //клавиатура не подкл, подкл джойстик
+    private static bool keyboard = false; //клавиатура не подкл, подкл джойстик
     [SerializeField] GameObject androidControl;
     public Joystick joystick;
 
@@ -79,6 +79,7 @@ public class PlayerController : MonoBehaviour
     public Collider2D poseStand;
     public Collider2D poseCrouch;
     private int crouchCounter = 0;
+    private int pauseCounter = 0;
 
     // private int maxCrouchCounter = 2;
 
@@ -107,19 +108,33 @@ public class PlayerController : MonoBehaviour
         }
 
         if (!keyboard) {
-            if(!isAttacking && (joystick.Horizontal != 0) && !isCrouching)
+            if(!isAttacking && ((joystick.Horizontal > 0.2f) || (joystick.Horizontal < -0.2f) ) && !isCrouching)
                 Run();    
             if(!isAttacking && (isGrounded || isGroundedStatic) && (joystick.Vertical > 0.3f))
                 Jump();
-            if((isGrounded || isGroundedStatic) && !isAttacking && (joystick.Vertical < -0.3f)) {
+            if(!isAttacking && (isGrounded || isGroundedStatic) && (joystick.Vertical < -0.2f) && crouchCounter==0) {
+                isCrouching = true;
+                poseStand.enabled = false;
+                poseCrouch.enabled = true;
                 //Debug.Log("Срабатывает");
-                Down();    
+                // Down();
+                // if (!isAttacking) {
+                State = States.crouch;
+                // }      
             }
+            if((joystick.Vertical > -0.2f) && (joystick.Vertical < 0.0f) ) {
+                isCrouching = false;
+                poseStand.enabled = true;
+                poseCrouch.enabled = false;
+                Invoke("Reset_crouch", 0.2f);
+            }
+            // if((isGrounded || isGroundedStatic) && (joystick.Vertical < -0.3f))
+            //     ();
         } else {
             if(Input.GetButton("Horizontal") && !isCrouching)
                 Run(); 
          
-            if(Input.GetButton("Vertical") && crouchCounter==0) {    
+            if((isGrounded || isGroundedStatic) && Input.GetButton("Vertical") && crouchCounter==0) {    
                 poseStand.enabled = false;
                 poseCrouch.enabled = true;
                 isCrouching = true;
@@ -148,18 +163,20 @@ public class PlayerController : MonoBehaviour
                 Punch();
             if ((isGrounded || isGroundedStatic) && Input.GetButtonDown("Fire2") && !isCrouching) 
                 Kick();
-            if (Input.GetButtonDown("Cancel")) {
-                pause.SetActive(true);
-                Time.timeScale = 0;
-            }
             if (!isGroundedStatic && !isGrounded && Input.GetButton("Fire2")) {
                 Flying_kick();   
             }   
-        }
+            if (Input.GetButtonDown("Cancel") && pauseCounter==0) {
+                pause.SetActive(true);
+                Time.timeScale = 0;
+                pauseCounter = 1;
+            } else if (Input.GetButtonDown("Cancel") && pauseCounter==1) {
+                pause.SetActive(false);
+                Time.timeScale = 1;
+                pauseCounter = 0; 
+            }
 
-        // if (Input.GetButtonDown("Vertical") && (crouchCounter >= maxCrouchCounter)) {
-        //     crouchCounter = 0;
-        // }
+        }
 
         if (health > lives) {
             health = lives;
