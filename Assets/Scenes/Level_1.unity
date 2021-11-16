@@ -138,7 +138,7 @@ PrefabInstance:
     - target: {fileID: 6763857185316935310, guid: 0cdd6cc4a43fbc545a27e21bac2242b3,
         type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6763857185316935310, guid: 0cdd6cc4a43fbc545a27e21bac2242b3,
         type: 3}
@@ -254,7 +254,7 @@ Transform:
   m_Children:
   - {fileID: 941877212}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &412173829 stripped
 GameObject:
@@ -4150,6 +4150,11 @@ PrefabInstance:
       objectReference: {fileID: 1312586272}
     - target: {fileID: 3692015068280233747, guid: 47b93f03287b29d40a5e7fab88e5d9b7,
         type: 3}
+      propertyPath: Canvas
+      value: 
+      objectReference: {fileID: 1306427943}
+    - target: {fileID: 3692015068280233747, guid: 47b93f03287b29d40a5e7fab88e5d9b7,
+        type: 3}
       propertyPath: dieMenu
       value: 
       objectReference: {fileID: 412173829}
@@ -4190,6 +4195,11 @@ PrefabInstance:
       objectReference: {fileID: 1088123977}
     - target: {fileID: 3692015068280233747, guid: 47b93f03287b29d40a5e7fab88e5d9b7,
         type: 3}
+      propertyPath: missPunchSound
+      value: 
+      objectReference: {fileID: 797920243}
+    - target: {fileID: 3692015068280233747, guid: 47b93f03287b29d40a5e7fab88e5d9b7,
+        type: 3}
       propertyPath: GroundStatic.m_Bits
       value: 512
       objectReference: {fileID: 0}
@@ -4221,7 +4231,7 @@ PrefabInstance:
     - target: {fileID: 3692015068280233773, guid: 47b93f03287b29d40a5e7fab88e5d9b7,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3692015068280233773, guid: 47b93f03287b29d40a5e7fab88e5d9b7,
         type: 3}
@@ -4314,6 +4324,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53d520cca8d5136409ba0ddc4536ec5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &797920243 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4873592018186049108, guid: 47b93f03287b29d40a5e7fab88e5d9b7,
+    type: 3}
+  m_PrefabInstance: {fileID: 757114889}
+  m_PrefabAsset: {fileID: 0}
 --- !u!850595691 &799657798
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -9573,6 +9589,26 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 2170115414226538243, guid: 34f5f22adf6acf04990431c9aa785099,
+        type: 3}
+      propertyPath: m_UiScaleMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2170115414226538243, guid: 34f5f22adf6acf04990431c9aa785099,
+        type: 3}
+      propertyPath: m_ScreenMatchMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2170115414226538243, guid: 34f5f22adf6acf04990431c9aa785099,
+        type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2170115414226538243, guid: 34f5f22adf6acf04990431c9aa785099,
+        type: 3}
+      propertyPath: m_ReferencePixelsPerUnit
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 2170115414226538245, guid: 34f5f22adf6acf04990431c9aa785099,
         type: 3}
       propertyPath: m_Name
@@ -9800,8 +9836,14 @@ Transform:
   m_Children:
   - {fileID: 567594969}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1306427943 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2170115414226538245, guid: 34f5f22adf6acf04990431c9aa785099,
+    type: 3}
+  m_PrefabInstance: {fileID: 1088123970}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1312586272 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6851702182439146204, guid: 99279f317c194c04f971ee138bd9f00b,
@@ -10260,7 +10302,7 @@ PrefabInstance:
     - target: {fileID: 6763857185316935310, guid: 0cdd6cc4a43fbc545a27e21bac2242b3,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6763857185316935310, guid: 0cdd6cc4a43fbc545a27e21bac2242b3,
         type: 3}

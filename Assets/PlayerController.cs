@@ -21,6 +21,13 @@ public class PlayerController : MonoBehaviour
     Animator anim;
     SpriteRenderer sr;
 
+    [SerializeField] private AudioSource missPunchSound;
+    [SerializeField] private AudioSource missKickSound;
+    [SerializeField] private AudioSource missCrouchKickSound;
+    [SerializeField] private AudioSource flyingKickSound;
+    [SerializeField] private AudioSource PunchSound;
+    [SerializeField] private AudioSource takeMoneySound;
+
     public bool isGrounded = false;
     public bool isGroundedStatic = false;
     public Transform groungCheck;
@@ -54,10 +61,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject dieMenu;
     [SerializeField] GameObject levelEnding;
     [SerializeField] GameObject pause;
-
-    public GameObject Damage;
-    public GameObject damageKick;
-    public GameObject flyingKick;
+    // [SerializeField] GameObject Canvas;
 
     public Transform PunchPosObject;  // объект для удара рукой
     public float PunchRange;
@@ -302,6 +306,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision) {
         if(collision.gameObject.tag == "gold") {
+            takeMoneySound.Play();
             Collect.score +=150;
         }
     }
@@ -348,6 +353,10 @@ public class PlayerController : MonoBehaviour
             State = States.punch;
             damage = 2;
             Collider2D[] enemies = Physics2D.OverlapCircleAll(PunchPosObject.position, PunchRange, enemy);
+            if (enemies.Length == 0)
+                missPunchSound.Play();
+            else
+                PunchSound.Play();
             for (int i = 0; i < enemies.Length; i++) {
                     enemies[i].GetComponent<damagebleObject>().TakeDamage(damage);
             }
@@ -368,6 +377,10 @@ public class PlayerController : MonoBehaviour
             State = States.kick;
             damage = 2;
             Collider2D[] enemies1 = Physics2D.OverlapCircleAll(KickPosObject.position, KickRange, enemy);
+            if (enemies1.Length == 0)
+                missKickSound.Play();
+            else
+                PunchSound.Play();
             for (int i = 0; i < enemies1.Length; i++) {
                     enemies1[i].GetComponent<damagebleObject>().TakeDamage(damage);
             }
@@ -382,12 +395,16 @@ public class PlayerController : MonoBehaviour
 
     //удар в прыжке 
     public void Flying_kick() {
-        Debug.Log("удар в прыжке");
+        // Debug.Log("удар в прыжке");
         isAttacking = true;
         if(isAttacking && !isGroundedStatic && !isGrounded) {
             State = States.flying_kick;
             damage = 2;
             Collider2D[] enemies2 = Physics2D.OverlapCircleAll(FlyKickPosObject.position, FlyKickRange, enemy);
+            if (enemies2.Length != 0)
+                // flyingKickSound.Play();
+                PunchSound.Play();
+            // else
             for (int i = 0; i < enemies2.Length; i++) {
                     enemies2[i].GetComponent<damagebleObject>().TakeDamage(damage);
             }
@@ -408,6 +425,10 @@ public class PlayerController : MonoBehaviour
             State = States.crouch_kick;
             damage = 2;
             Collider2D[] enemies3 = Physics2D.OverlapCircleAll(CrouchKickPosObject.position, CrouchKickRange, enemy);
+            if (enemies3.Length == 0)
+                missCrouchKickSound.Play();
+            else
+                PunchSound.Play();
             for (int i = 0; i < enemies3.Length; i++) {
                     enemies3[i].GetComponent<damagebleObject>().TakeDamage(damage);
             }
@@ -427,6 +448,7 @@ public class PlayerController : MonoBehaviour
     }
 
     public void NextLevel() {
+        // Canvas.SetActive(false);
         levelEnding.SetActive(true);
         Time.timeScale = 0;
     }

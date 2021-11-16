@@ -11,27 +11,15 @@ public class Camera1 : MonoBehaviour
 
     [SerializeField] GameObject buttons;
     [SerializeField] GameObject referencePanel;
-
-    // [SerializeField] float leftLimit,
-    //     rightLimit,
-    //     topLimit,
-    //     bottomLimit;
+    [SerializeField] GameObject levelList;
+    
+    private void Start() {
+        levelList.SetActive(false);
+    }
 
     private void Update() {
         pos = player.position;
         pos.z = -10f;
-
-        // if(GameObject.Find("Hero").transform) {
-        //     transform.position = Vector3.Lerp(transform.position, pos, Time.deltaTime*2);    
-        // }
-        
-        // pos2 = new Vector3
-        // (
-        // Mathf.Clamp(transform.position.x, leftLimit, rightLimit),
-        // Mathf.Clamp(transform.position.y, topLimit, bottomLimit),
-        // transform.position.z
-        // );
-
     }
 
     private void Awake() {
@@ -49,21 +37,14 @@ public class Camera1 : MonoBehaviour
         referencePanel.SetActive(false);
     }
 
-    public void OpenLevelsList(int index)
+    public void OpenLevelsList()
     {
-        SceneManager.LoadScene(index); //scene levelMenu
+        levelList.SetActive(true);
+        buttons.SetActive(false);
     }
 
     public void Select(int index)
     {
         SceneManager.LoadScene(index); 
     }
-
-    // private void OnDrawGizmos() {
-    //     Gizmos.color = Color.red;
-    //     Gizmos.DrawLine(new Vector2(leftLimit, topLimit), new Vector2(rightLimit, topLimit));
-    //     Gizmos.DrawLine(new Vector2(leftLimit, bottomLimit), new Vector2(rightLimit, bottomLimit));
-    //     Gizmos.DrawLine(new Vector2(leftLimit, topLimit), new Vector2(leftLimit, bottomLimit));
-    //     Gizmos.DrawLine(new Vector2(rightLimit, topLimit), new Vector2(rightLimit, bottomLimit));
-    // }
 }
