@@ -291,21 +291,41 @@ public class PlayerController : MonoBehaviour
         if(collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Spell" || collision.gameObject.tag == "Boss") {
             lives--;
             Debug.Log("Player lives = " + lives);
-        }    
+        }
 
-        // if (lives < 1) {
+    }       
+            // if (lives < 1) {
                 //Destroy(gameObject, 0.5f);
             // Debug.Log("Вы мертвы");
             // Collect.score = 0;
             // SetPause();
             // Camera1.SetPause();
         // }
-                
+
+    int counter = 0;
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if(collision.gameObject.tag == "gold") {
+            if(counter == 0) {
+                Collect.score +=150;
+                counter = 1;
+            } 
+            // else if(counter == 1) {
+            //     counter = 0;
+            // }
+        }
     }
     private void OnTriggerStay2D(Collider2D collision) {
         if(collision.gameObject.tag == "gold") {
-            takeMoneySound.Play();
-            Collect.score +=150;
+            if(counter == 1) {
+                counter = 0;
+            }
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision) {
+        if(collision.gameObject.tag == "gold") {
+            if(counter == 1) {
+                counter = 0;
+            }
         }
     }
 
@@ -374,12 +394,15 @@ public class PlayerController : MonoBehaviour
         isAttacking = true;
         if(isAttacking && !isGroundedStatic && !isGrounded) {
             State = States.flying_kick;
+            
             damage = 2;
             Collider2D[] enemies2 = Physics2D.OverlapCircleAll(FlyKickPosObject.position, FlyKickRange, enemy);
-            if (enemies2.Length != 0)
-                // flyingKickSound.Play();
+            if (enemies2.Length != 0) {
+                if (!keyboard)
+                    flyingKickSound.Play();
+            } else {
                 PunchSound.Play();
-            // else
+            }
             for (int i = 0; i < enemies2.Length; i++) {
                     enemies2[i].GetComponent<damagebleObject>().TakeDamage(damage);
             }
