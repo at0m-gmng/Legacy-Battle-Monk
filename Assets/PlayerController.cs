@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask Ground;
     public LayerMask GroundStatic;
 
-    public static bool keyboard = true; //клавиатура не подкл, подкл джойстик
+    public static bool keyboard = false; //клавиатура не подкл, подкл джойстик
     [SerializeField] GameObject androidControl;
     public Joystick joystick;
 
@@ -117,17 +117,17 @@ public class PlayerController : MonoBehaviour
             if(joystick.Vertical > 0.3f)
                 Jump();
             if(!isAttacking && (isGrounded || isGroundedStatic) && (joystick.Vertical < -0.2f) && crouchCounter==0) {
+                poseStand.enabled = false;
+                poseCrouch.enabled = true;
                 isCrouching = true;
-                poseStand.enabled = true;
-                poseCrouch.enabled = false;
                 // Down(); //не забыть добавить
                 State = States.crouch;
             }
             if((joystick.Vertical > -0.1f) ) {
                 crouchCounter = 1;
+                poseStand.enabled = true;
+                poseCrouch.enabled = false;
                 isCrouching = false;
-                poseStand.enabled = false;
-                poseCrouch.enabled = true;
                 Invoke("Reset_crouch", 0.3f);
             }
             if ((joystick.Vertical < -0.2f) && crouchCounter==1)
@@ -139,8 +139,8 @@ public class PlayerController : MonoBehaviour
                 Run(); 
          
             if((isGrounded || isGroundedStatic) && Input.GetButton("Vertical") && crouchCounter==0) {    
-                poseStand.enabled = true;
-                poseCrouch.enabled = false;
+                poseStand.enabled = false;
+                poseCrouch.enabled = true;
                 isCrouching = true;
                 if(Input.GetButtonDown("Fire2")) { // работает, но анимация срабатывает мгновенно
                     Crouch_kick();             // костыль написать GetButton
@@ -148,13 +148,11 @@ public class PlayerController : MonoBehaviour
                     State = States.crouch;  
                 }
                 // Debug.Log(crouchCounter);                
-            }
-
-            if(Input.GetButtonUp("Vertical")) {
+            } else if(Input.GetButtonUp("Vertical")) {
                 crouchCounter = 1;
                 // Debug.Log(crouchCounter);
-                poseStand.enabled = false;
-                poseCrouch.enabled = true;
+                poseStand.enabled = true;
+                poseCrouch.enabled = false;
                 isCrouching = false;
                 Invoke("Reset_crouch", 0.2f); // будет влиять на скорость проваливания сквозь платформы
             }
