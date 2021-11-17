@@ -557,7 +557,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -578,7 +578,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 1724559333}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -597,8 +597,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 369440318}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 90}
+  m_LocalScale: {x: 1.0640534, y: 1.0640534, z: 1.0640534}
   m_Children:
   - {fileID: 1988903354}
   - {fileID: 372342908}
@@ -608,8 +608,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 554, y: 315.5}
-  m_SizeDelta: {x: 1108, y: 631}
+  m_AnchoredPosition: {x: 559.32, y: 320}
+  m_SizeDelta: {x: 800, y: 450}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!82 &369440323
 AudioSource:
@@ -828,7 +828,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1724559335}
-        m_TargetAssemblyTypeName: Camera1, Assembly-CSharp
+        m_TargetAssemblyTypeName: Camera0, Assembly-CSharp
         m_MethodName: Reference
         m_Mode: 1
         m_Arguments:
@@ -930,7 +930,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1724559335}
-        m_TargetAssemblyTypeName: Camera1, Assembly-CSharp
+        m_TargetAssemblyTypeName: Camera0, Assembly-CSharp
         m_MethodName: Select
         m_Mode: 3
         m_Arguments:
@@ -1290,7 +1290,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 178.3, y: -292.85}
+  m_AnchoredPosition: {x: 178.29999, y: -292.84998}
   m_SizeDelta: {x: 303.7688, y: 1774.7}
   m_Pivot: {x: 0.5518562, y: -0.676096}
 --- !u!114 &844734081
@@ -1571,7 +1571,7 @@ PrefabInstance:
     - target: {fileID: 6851702181769831348, guid: fc0ebe83c81ad4d41b6ec214f989947e,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Camera1, Assembly-CSharp
+      value: Camera0, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6851702181769831355, guid: fc0ebe83c81ad4d41b6ec214f989947e,
         type: 3}
@@ -1745,7 +1745,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1724559335}
-        m_TargetAssemblyTypeName: Camera1, Assembly-CSharp
+        m_TargetAssemblyTypeName: Camera0, Assembly-CSharp
         m_MethodName: OpenLevelsList
         m_Mode: 1
         m_Arguments:
@@ -2029,7 +2029,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1724559335}
-        m_TargetAssemblyTypeName: Camera1, Assembly-CSharp
+        m_TargetAssemblyTypeName: Camera0, Assembly-CSharp
         m_MethodName: Select
         m_Mode: 3
         m_Arguments:
@@ -2176,7 +2176,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1724559335}
-        m_TargetAssemblyTypeName: Camera1, Assembly-CSharp
+        m_TargetAssemblyTypeName: Camera0, Assembly-CSharp
         m_MethodName: Select
         m_Mode: 3
         m_Arguments:
@@ -2310,7 +2310,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.21788326, y: 0.52044743}
   m_AnchorMax: {x: 0.7922648, y: 1}
-  m_AnchoredPosition: {x: 9, y: -48.004}
+  m_AnchoredPosition: {x: 9, y: -48.003998}
   m_SizeDelta: {x: -617.87, y: -300.1209}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &1605362200
@@ -2361,7 +2361,7 @@ SpriteRenderer:
   m_Size: {x: 10.67, y: 3.57}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1681812788
@@ -2447,7 +2447,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1724559335}
-        m_TargetAssemblyTypeName: Camera1, Assembly-CSharp
+        m_TargetAssemblyTypeName: Camera0, Assembly-CSharp
         m_MethodName: Select
         m_Mode: 3
         m_Arguments:
@@ -2559,13 +2559,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1724559331}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61cd5c3298c923a4e9c79fe2e9058ec8, type: 3}
+  m_Script: {fileID: 11500000, guid: f81b602fac4674b479bcec36880644cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 369440322}
-  buttons: {fileID: 372342907}
-  referencePanel: {fileID: 935118934}
+  buttonsMainMenu: {fileID: 372342907}
   levelList: {fileID: 1469317340}
+  referencePanel: {fileID: 935118934}
 --- !u!1 &1772514101
 GameObject:
   m_ObjectHideFlags: 0

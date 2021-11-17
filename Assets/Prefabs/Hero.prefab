@@ -245,7 +245,6 @@ MonoBehaviour:
   androidControl: {fileID: 0}
   joystick: {fileID: 0}
   speed: 2
-  lives: 5
   health: 0
   hearts:
   - {fileID: 0}
@@ -258,13 +257,7 @@ MonoBehaviour:
     type: 3}
   deathHeart: {fileID: -8761483511772326392, guid: fd671e2eba9b4b943bd2b03b9e84f24b,
     type: 3}
-  dieMenu: {fileID: 0}
-  levelEnding: {fileID: 0}
   pause: {fileID: 0}
-  Damage: {fileID: 3159581275274788727, guid: e740b93dcb3eba14b8c071d727d69f7d, type: 3}
-  damageKick: {fileID: 6736103134884970992, guid: 9cede02268ec6d147aec0fb4df783c86,
-    type: 3}
-  flyingKick: {fileID: 0}
   PunchPosObject: {fileID: 2812779425465956419}
   PunchRange: 0.12
   KickPosObject: {fileID: 5551353498555485726}
@@ -292,8 +285,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.07756376, y: 0.12675747}
-  m_Size: {x: 0.251, y: 0.263}
+  m_Offset: {x: -0.07756376, y: 0.12075746}
+  m_Size: {x: 0.251, y: 0.251}
   m_Direction: 0
 --- !u!82 &4873592018186049108
 AudioSource:

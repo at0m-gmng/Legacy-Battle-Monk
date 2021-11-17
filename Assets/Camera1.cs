@@ -9,42 +9,78 @@ public class Camera1 : MonoBehaviour
     [SerializeField] private Transform player;
     private Vector3 pos;
 
-    [SerializeField] GameObject buttons;
+
     [SerializeField] GameObject referencePanel;
-    [SerializeField] GameObject levelList;
+    [SerializeField] GameObject pausePanel;
+    [SerializeField] GameObject diePanel;
+    [SerializeField] GameObject levelNextPanel;
+    [SerializeField] GameObject androidControl;
     
     private void Start() {
-        levelList.SetActive(false);
+        
     }
 
     private void Update() {
         pos = player.position;
         pos.z = -10f;
+        LevelEnding();
+        if(PlayerController.lives < 1) {
+            DieMenu();
+        }
     }
 
     private void Awake() {
-        buttons.SetActive(true);
         referencePanel.SetActive(false);
+        pausePanel.SetActive(false);
+        diePanel.SetActive(false);
+        levelNextPanel.SetActive(false);
+        Time.timeScale = 1;
+    }
+
+    public void SetPause() {
+        pausePanel.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    public void PauseOff() {
+        pausePanel.SetActive(false);
+        Time.timeScale = 1;
     }
 
     public void Reference() {
-        buttons.SetActive(false);
-        referencePanel.SetActive(true);
+        if(PlayerController.keyboard == false) {
+            referencePanel.SetActive(false);
+            pausePanel.SetActive(true);
+        } else {
+            referencePanel.SetActive(true);
+            pausePanel.SetActive(false);
+        }
     }
 
     public void ReferenceOff() {
-        buttons.SetActive(true);
         referencePanel.SetActive(false);
+        pausePanel.SetActive(true);
     }
 
-    public void OpenLevelsList()
-    {
-        levelList.SetActive(true);
-        buttons.SetActive(false);
+    private void DieMenu() {
+        Time.timeScale = 0;
+        diePanel.SetActive(true);
+        androidControl.SetActive(false);
     }
 
-    public void Select(int index)
-    {
-        SceneManager.LoadScene(index); 
+    private void LevelEnding() {
+        if(!GameObject.Find("Angel") ) {
+            levelNextPanel.SetActive(true);
+            Time.timeScale = 0;
+        } 
+    }
+
+    public void Select(int index) {
+        PauseOff();
+        if(PlayerController.lives < 1) {
+            Collect.score = 0;
+        }
+        SceneManager.LoadScene(index);
+        PlayerController.lives = 5; 
     }
 }

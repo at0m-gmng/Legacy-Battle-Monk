@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 4589666248275711071}
   - component: {fileID: 4589666248275711069}
   - component: {fileID: 4589666248275711070}
-  - component: {fileID: 4589666248275711137}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -98,21 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  leftLimit: -0.48
-  rightLimit: -0.27
-  topLimit: -0.26
-  bottomLimit: -0.81
---- !u!114 &4589666248275711137
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4589666248275711068}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 061d313133edb4745985546b93e7177f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pausePanel: {fileID: 0}
+  buttonsMainMenu: {fileID: 0}
   referencePanel: {fileID: 0}
+  levelList: {fileID: 0}
+  pausePanel: {fileID: 0}

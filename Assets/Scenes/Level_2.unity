@@ -517,11 +517,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 567973655}
+      objectReference: {fileID: 1220824139}
     - target: {fileID: 6851702181769831348, guid: fc0ebe83c81ad4d41b6ec214f989947e,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ReferenceOff
+      objectReference: {fileID: 0}
+    - target: {fileID: 6851702181769831348, guid: fc0ebe83c81ad4d41b6ec214f989947e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Camera1, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc0ebe83c81ad4d41b6ec214f989947e, type: 3}
@@ -843,6 +848,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6283ce6bcdc1f3640a82ee4917d5b3ef, type: 3}
+--- !u!1 &330501515 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7678465320451030911, guid: cf74628a7fdb28e4c836ebad4aab7dc4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1705558204}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &393767620
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1218,6 +1229,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 540256648}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &533953092 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6037389743652055360, guid: 9339fd8761afb12419a85357b3fb922e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1326083694}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &540256648
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1254,16 +1271,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 567973655}
-    - target: {fileID: 2170115413583860386, guid: 34f5f22adf6acf04990431c9aa785099,
+      objectReference: {fileID: 1220824139}
+    - target: {fileID: 2170115413583860385, guid: 34f5f22adf6acf04990431c9aa785099,
         type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -35
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Camera1, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2170115413583860386, guid: 34f5f22adf6acf04990431c9aa785099,
         type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -35
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2170115413583860386, guid: 34f5f22adf6acf04990431c9aa785099,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2170115414226538241, guid: 34f5f22adf6acf04990431c9aa785099,
         type: 3}
@@ -1375,6 +1397,11 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 567973654}
+    - target: {fileID: 2170115414226538243, guid: 34f5f22adf6acf04990431c9aa785099,
+        type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2170115414226538245, guid: 34f5f22adf6acf04990431c9aa785099,
         type: 3}
       propertyPath: m_Name
@@ -1474,6 +1501,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -17.87355
+      objectReference: {fileID: 0}
+    - target: {fileID: 5503863173632216100, guid: 34f5f22adf6acf04990431c9aa785099,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 16.438995
       objectReference: {fileID: 0}
     - target: {fileID: 5576013406408102198, guid: 34f5f22adf6acf04990431c9aa785099,
         type: 3}
@@ -1668,18 +1700,6 @@ Camera:
     type: 3}
   m_PrefabInstance: {fileID: 1220824138}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &567973655 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4589666248275711137, guid: 985e8fe58509f0045a09389047d6784f,
-    type: 3}
-  m_PrefabInstance: {fileID: 1220824138}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 425547458}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 061d313133edb4745985546b93e7177f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &577214519
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15101,6 +15121,31 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1094924872}
+    - target: {fileID: 4589666248275711070, guid: 985e8fe58509f0045a09389047d6784f,
+        type: 3}
+      propertyPath: diePanel
+      value: 
+      objectReference: {fileID: 533953092}
+    - target: {fileID: 4589666248275711070, guid: 985e8fe58509f0045a09389047d6784f,
+        type: 3}
+      propertyPath: pausePanel
+      value: 
+      objectReference: {fileID: 1106790185}
+    - target: {fileID: 4589666248275711070, guid: 985e8fe58509f0045a09389047d6784f,
+        type: 3}
+      propertyPath: androidControl
+      value: 
+      objectReference: {fileID: 506078091}
+    - target: {fileID: 4589666248275711070, guid: 985e8fe58509f0045a09389047d6784f,
+        type: 3}
+      propertyPath: levelNextPanel
+      value: 
+      objectReference: {fileID: 330501515}
+    - target: {fileID: 4589666248275711070, guid: 985e8fe58509f0045a09389047d6784f,
+        type: 3}
+      propertyPath: referencePanel
+      value: 
+      objectReference: {fileID: 179221714}
     - target: {fileID: 4589666248275711136, guid: 985e8fe58509f0045a09389047d6784f,
         type: 3}
       propertyPath: m_RootOrder
@@ -15166,8 +15211,21 @@ PrefabInstance:
       propertyPath: referencePanel
       value: 
       objectReference: {fileID: 179221714}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4589666248275711137, guid: 985e8fe58509f0045a09389047d6784f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 985e8fe58509f0045a09389047d6784f, type: 3}
+--- !u!114 &1220824139 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4589666248275711070, guid: 985e8fe58509f0045a09389047d6784f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1220824138}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 425547458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61cd5c3298c923a4e9c79fe2e9058ec8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1290063246
 GameObject:
   m_ObjectHideFlags: 0
@@ -15370,26 +15428,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 567973655}
+      objectReference: {fileID: 1220824139}
     - target: {fileID: 6037389744312029791, guid: 9339fd8761afb12419a85357b3fb922e,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OpenLevelsList
+      value: Select
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037389744312029791, guid: 9339fd8761afb12419a85357b3fb922e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Camera1, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6037389744312029791, guid: 9339fd8761afb12419a85357b3fb922e,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6037389744940591810, guid: 9339fd8761afb12419a85357b3fb922e,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 567973655}
+      objectReference: {fileID: 1220824139}
     - target: {fileID: 6037389744940591810, guid: 9339fd8761afb12419a85357b3fb922e,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OpenLevelsList
+      value: Select
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037389744940591810, guid: 9339fd8761afb12419a85357b3fb922e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Camera1, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6037389744940591810, guid: 9339fd8761afb12419a85357b3fb922e,
         type: 3}
@@ -16051,11 +16119,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 567973655}
+      objectReference: {fileID: 1220824139}
     - target: {fileID: 7678465320226277245, guid: cf74628a7fdb28e4c836ebad4aab7dc4,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OpenLevelsList
+      value: Select
+      objectReference: {fileID: 0}
+    - target: {fileID: 7678465320226277245, guid: cf74628a7fdb28e4c836ebad4aab7dc4,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Camera1, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7678465320226277245, guid: cf74628a7fdb28e4c836ebad4aab7dc4,
         type: 3}
@@ -16066,16 +16139,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 567973655}
+      objectReference: {fileID: 1220824139}
     - target: {fileID: 7678465320264126067, guid: cf74628a7fdb28e4c836ebad4aab7dc4,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OpenLevelsList
+      value: Select
+      objectReference: {fileID: 0}
+    - target: {fileID: 7678465320264126067, guid: cf74628a7fdb28e4c836ebad4aab7dc4,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Camera1, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7678465320264126067, guid: cf74628a7fdb28e4c836ebad4aab7dc4,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7678465320855072946, guid: cf74628a7fdb28e4c836ebad4aab7dc4,
         type: 3}
@@ -16216,17 +16294,32 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 567973655}
+      objectReference: {fileID: 1220824139}
     - target: {fileID: 1534936391600711985, guid: 99279f317c194c04f971ee138bd9f00b,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Reference
       objectReference: {fileID: 0}
+    - target: {fileID: 1534936391600711985, guid: 99279f317c194c04f971ee138bd9f00b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Camera1, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 6851702181515814084, guid: 99279f317c194c04f971ee138bd9f00b,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 567973655}
+      objectReference: {fileID: 1220824139}
+    - target: {fileID: 6851702181515814084, guid: 99279f317c194c04f971ee138bd9f00b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Select
+      objectReference: {fileID: 0}
+    - target: {fileID: 6851702181515814084, guid: 99279f317c194c04f971ee138bd9f00b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Camera1, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 6851702181515814084, guid: 99279f317c194c04f971ee138bd9f00b,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
@@ -16356,7 +16449,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 567973655}
+      objectReference: {fileID: 1220824139}
+    - target: {fileID: 6851702181769831348, guid: 99279f317c194c04f971ee138bd9f00b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Camera1, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99279f317c194c04f971ee138bd9f00b, type: 3}
 --- !u!1001 &1803711468

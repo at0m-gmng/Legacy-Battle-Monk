@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask Ground;
     public LayerMask GroundStatic;
 
-    private static bool keyboard = true; //клавиатура не подкл, подкл джойстик
+    public static bool keyboard = true; //клавиатура не подкл, подкл джойстик
     [SerializeField] GameObject androidControl;
     public Joystick joystick;
 
@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
     }
 
     [SerializeField] private float speed = 2f;
-    [SerializeField] private int lives = 5;
+    [SerializeField] public static int lives = 5;
     [SerializeField] private int health;
     [SerializeField] private Image[] hearts;
     [SerializeField] private float jumpForce = 10f;
@@ -58,8 +58,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Sprite aliveHeart;
     [SerializeField] private Sprite deathHeart;
 
-    [SerializeField] GameObject dieMenu;
-    [SerializeField] GameObject levelEnding;
+    // [SerializeField] GameObject dieMenu;
+    // [SerializeField] GameObject levelEnding;
     [SerializeField] GameObject pause;
     // [SerializeField] GameObject Canvas;
 
@@ -104,7 +104,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update() {
         ChechGround();
-        LevelEnding();
+        // LevelEnding();
         if ((isGrounded || isGroundedStatic) && !isAttacking ) {
             // Debug.Log("Есть апдейт");s
             //isAttacking = false;
@@ -118,16 +118,16 @@ public class PlayerController : MonoBehaviour
                 Jump();
             if(!isAttacking && (isGrounded || isGroundedStatic) && (joystick.Vertical < -0.2f) && crouchCounter==0) {
                 isCrouching = true;
-                poseStand.enabled = false;
-                poseCrouch.enabled = true;
+                poseStand.enabled = true;
+                poseCrouch.enabled = false;
                 // Down(); //не забыть добавить
                 State = States.crouch;
             }
             if((joystick.Vertical > -0.1f) ) {
                 crouchCounter = 1;
                 isCrouching = false;
-                poseStand.enabled = true;
-                poseCrouch.enabled = false;
+                poseStand.enabled = false;
+                poseCrouch.enabled = true;
                 Invoke("Reset_crouch", 0.3f);
             }
             if ((joystick.Vertical < -0.2f) && crouchCounter==1)
@@ -139,8 +139,8 @@ public class PlayerController : MonoBehaviour
                 Run(); 
          
             if((isGrounded || isGroundedStatic) && Input.GetButton("Vertical") && crouchCounter==0) {    
-                poseStand.enabled = false;
-                poseCrouch.enabled = true;
+                poseStand.enabled = true;
+                poseCrouch.enabled = false;
                 isCrouching = true;
                 if(Input.GetButtonDown("Fire2")) { // работает, но анимация срабатывает мгновенно
                     Crouch_kick();             // костыль написать GetButton
@@ -153,8 +153,8 @@ public class PlayerController : MonoBehaviour
             if(Input.GetButtonUp("Vertical")) {
                 crouchCounter = 1;
                 // Debug.Log(crouchCounter);
-                poseStand.enabled = true;
-                poseCrouch.enabled = false;
+                poseStand.enabled = false;
+                poseCrouch.enabled = true;
                 isCrouching = false;
                 Invoke("Reset_crouch", 0.2f); // будет влиять на скорость проваливания сквозь платформы
             }
@@ -295,43 +295,20 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Player lives = " + lives);
         }    
 
-        if (lives < 1) {
+        // if (lives < 1) {
                 //Destroy(gameObject, 0.5f);
-            Debug.Log("Вы мертвы");
-            Collect.score = 0;
-            SetPause();
-        }
+            // Debug.Log("Вы мертвы");
+            // Collect.score = 0;
+            // SetPause();
+            // Camera1.SetPause();
+        // }
                 
     }
-
     private void OnTriggerStay2D(Collider2D collision) {
         if(collision.gameObject.tag == "gold") {
             takeMoneySound.Play();
             Collect.score +=150;
         }
-    }
-
-    private void Awake() {
-        dieMenu.SetActive(false);
-        levelEnding.SetActive(false);
-        Time.timeScale = 1;
-    }
-
-    public void SetPause() {
-        dieMenu.SetActive(true);
-        Time.timeScale = 0;
-    }
-
-    public void PauseOff() {
-        dieMenu.SetActive(false);
-        Time.timeScale = 1;
-    }
-
-    public void OpenLevelsList(int index) {
-            PauseOff();
-            if(index == 0)
-                Collect.score = 0;
-            SceneManager.LoadScene(index); 
     }
 
     //отрисовка области поражения
@@ -421,7 +398,7 @@ public class PlayerController : MonoBehaviour
     public void Crouch_kick() {
         // Debug.Log("пинок в присяде");
         isAttacking = true;
-        if(isAttacking) {
+        if(isAttacking && isCrouching) {
             State = States.crouch_kick;
             damage = 2;
             Collider2D[] enemies3 = Physics2D.OverlapCircleAll(CrouchKickPosObject.position, CrouchKickRange, enemy);
@@ -441,15 +418,4 @@ public class PlayerController : MonoBehaviour
         damage = 0;
     }
 
-    private void LevelEnding() {
-        if(!GameObject.Find("Angel") ) {
-            NextLevel();
-        } 
-    }
-
-    public void NextLevel() {
-        // Canvas.SetActive(false);
-        levelEnding.SetActive(true);
-        Time.timeScale = 0;
-    }
 }
