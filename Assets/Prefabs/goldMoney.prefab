@@ -128,6 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 896b8e5afa40f764db35327f2bc9343e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  takeMoneySound: {fileID: 0}
 --- !u!82 &8213828659363464870
 AudioSource:
   m_ObjectHideFlags: 0
@@ -135,12 +136,12 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1851068086411242512}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 0bd478282216943d298e9b5dc2f94fc3, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.2
   m_Pitch: 1.73
   Loop: 0
   Mute: 0
@@ -148,7 +149,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 2.7593994
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0

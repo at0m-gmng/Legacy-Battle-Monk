@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask Ground;
     public LayerMask GroundStatic;
 
-    public static bool keyboard = false; //клавиатура не подкл, подкл джойстик
+    public static bool keyboard = true; //клавиатура не подкл, подкл джойстик
     [SerializeField] GameObject androidControl;
     public Joystick joystick;
 
@@ -90,6 +90,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start() {
         СontrolOnLevel();
+        poseCrouch.enabled = false;
         health = lives;
         //Instance = this;
         sr = GetComponentInChildren<SpriteRenderer>();
@@ -293,41 +294,28 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Player lives = " + lives);
         }
 
-    }       
-            // if (lives < 1) {
-                //Destroy(gameObject, 0.5f);
-            // Debug.Log("Вы мертвы");
-            // Collect.score = 0;
-            // SetPause();
-            // Camera1.SetPause();
-        // }
+    }
 
-    int counter = 0;
+    // int counter = 0;
     private void OnTriggerEnter2D(Collider2D collision) {
         if(collision.gameObject.tag == "gold") {
-            if(counter == 0) {
-                Collect.score +=150;
-                counter = 1;
-            } 
-            // else if(counter == 1) {
-            //     counter = 0;
-            // }
+            takeMoneySound.Play();
         }
     }
-    private void OnTriggerStay2D(Collider2D collision) {
-        if(collision.gameObject.tag == "gold") {
-            if(counter == 1) {
-                counter = 0;
-            }
-        }
-    }
-    private void OnTriggerExit2D(Collider2D collision) {
-        if(collision.gameObject.tag == "gold") {
-            if(counter == 1) {
-                counter = 0;
-            }
-        }
-    }
+    // private void OnTriggerStay2D(Collider2D collision) {
+    //     if(collision.gameObject.tag == "gold") {
+    //         if(counter == 1) {
+    //             counter = 0;
+    //         }
+    //     }
+    // }
+    // private void OnTriggerExit2D(Collider2D collision) {
+    //     if(collision.gameObject.tag == "gold") {
+    //         if(counter == 1) {
+    //             counter = 0;
+    //         }
+    //     }
+    // }
 
     //отрисовка области поражения
     private void OnDrawGizmosSelected() {
@@ -397,11 +385,12 @@ public class PlayerController : MonoBehaviour
             
             damage = 2;
             Collider2D[] enemies2 = Physics2D.OverlapCircleAll(FlyKickPosObject.position, FlyKickRange, enemy);
-            if (enemies2.Length != 0) {
+            if (enemies2.Length == 0) {
+                missPunchSound.Play();
+                
+            } else {
                 if (!keyboard)
                     flyingKickSound.Play();
-            } else {
-                PunchSound.Play();
             }
             for (int i = 0; i < enemies2.Length; i++) {
                     enemies2[i].GetComponent<damagebleObject>().TakeDamage(damage);
