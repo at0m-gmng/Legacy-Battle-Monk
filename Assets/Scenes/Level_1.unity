@@ -123,6 +123,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &128446008 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8624860716215140537, guid: 99279f317c194c04f971ee138bd9f00b,
+    type: 3}
+  m_PrefabInstance: {fileID: 6851702181535525116}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &167535302
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9887,6 +9893,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 900392386}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1425269247 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7720271803333091209, guid: 99279f317c194c04f971ee138bd9f00b,
+    type: 3}
+  m_PrefabInstance: {fileID: 6851702181535525116}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1541951338 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3692015068280233773, guid: 47b93f03287b29d40a5e7fab88e5d9b7,
@@ -10041,7 +10053,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1399957465685440911}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1399957465685440912}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 61cd5c3298c923a4e9c79fe2e9058ec8, type: 3}
@@ -10151,6 +10163,16 @@ PrefabInstance:
       objectReference: {fileID: 1312586272}
     - target: {fileID: 1399957465573065201, guid: 9340834a56001aa4c8546cc27306b539,
         type: 3}
+      propertyPath: pauseBattons
+      value: 
+      objectReference: {fileID: 128446008}
+    - target: {fileID: 1399957465573065201, guid: 9340834a56001aa4c8546cc27306b539,
+        type: 3}
+      propertyPath: recordsTable
+      value: 
+      objectReference: {fileID: 1425269247}
+    - target: {fileID: 1399957465573065201, guid: 9340834a56001aa4c8546cc27306b539,
+        type: 3}
       propertyPath: androidControl
       value: 
       objectReference: {fileID: 1088123977}
@@ -10176,12 +10198,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9340834a56001aa4c8546cc27306b539, type: 3}
---- !u!1 &1399957465685440912 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1399957465573065203, guid: 9340834a56001aa4c8546cc27306b539,
-    type: 3}
-  m_PrefabInstance: {fileID: 1399957465685440911}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1851068087681020916
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10656,6 +10672,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1322193561758541650, guid: 99279f317c194c04f971ee138bd9f00b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2101501098}
+    - target: {fileID: 1322193561758541650, guid: 99279f317c194c04f971ee138bd9f00b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: recordsOff
+      objectReference: {fileID: 0}
+    - target: {fileID: 1322193561758541650, guid: 99279f317c194c04f971ee138bd9f00b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Camera1, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 1534936391600711985, guid: 99279f317c194c04f971ee138bd9f00b,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -10675,6 +10706,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Camera1, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2090736531594106724, guid: 99279f317c194c04f971ee138bd9f00b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 56.20508
       objectReference: {fileID: 0}
     - target: {fileID: 3340164846121616477, guid: 99279f317c194c04f971ee138bd9f00b,
         type: 3}
@@ -10764,7 +10800,7 @@ PrefabInstance:
     - target: {fileID: 6851702181609455373, guid: 99279f317c194c04f971ee138bd9f00b,
         type: 3}
       propertyPath: m_SortingOrder
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6851702181609455374, guid: 99279f317c194c04f971ee138bd9f00b,
         type: 3}
@@ -10908,13 +10944,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7192503772555619805, guid: 99279f317c194c04f971ee138bd9f00b,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7192503772555619805, guid: 99279f317c194c04f971ee138bd9f00b,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1399957465685440912}
+      objectReference: {fileID: 2101501098}
     - target: {fileID: 7192503772555619805, guid: 99279f317c194c04f971ee138bd9f00b,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
+      value: records
+      objectReference: {fileID: 0}
+    - target: {fileID: 7192503772555619805, guid: 99279f317c194c04f971ee138bd9f00b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Camera1, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7220219104374497770, guid: 99279f317c194c04f971ee138bd9f00b,
         type: 3}

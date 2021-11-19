@@ -15,6 +15,8 @@ public class Camera1 : MonoBehaviour
     [SerializeField] GameObject diePanel;
     [SerializeField] GameObject levelNextPanel;
     [SerializeField] GameObject androidControl;
+    [SerializeField] GameObject recordsTable;
+    [SerializeField] GameObject pauseBattons;
     
     private void Start() {
         
@@ -30,6 +32,7 @@ public class Camera1 : MonoBehaviour
     }
 
     private void Awake() {
+        recordsTable.SetActive(false);
         referencePanel.SetActive(false);
         pausePanel.SetActive(false);
         diePanel.SetActive(false);
@@ -45,6 +48,16 @@ public class Camera1 : MonoBehaviour
     public void PauseOff() {
         pausePanel.SetActive(false);
         Time.timeScale = 1;
+    }
+
+    public void records() {
+        pauseBattons.SetActive(false);
+        recordsTable.SetActive(true);
+    }
+
+    public void recordsOff() {
+        pauseBattons.SetActive(true);
+        recordsTable.SetActive(false);
     }
 
     public void Reference() {

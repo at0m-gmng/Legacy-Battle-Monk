@@ -15133,6 +15133,16 @@ PrefabInstance:
       objectReference: {fileID: 1106790185}
     - target: {fileID: 4589666248275711070, guid: 985e8fe58509f0045a09389047d6784f,
         type: 3}
+      propertyPath: pauseBattons
+      value: 
+      objectReference: {fileID: 1714115649}
+    - target: {fileID: 4589666248275711070, guid: 985e8fe58509f0045a09389047d6784f,
+        type: 3}
+      propertyPath: recordsTable
+      value: 
+      objectReference: {fileID: 1714115650}
+    - target: {fileID: 4589666248275711070, guid: 985e8fe58509f0045a09389047d6784f,
+        type: 3}
       propertyPath: androidControl
       value: 
       objectReference: {fileID: 506078091}
@@ -16285,6 +16295,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1322193561758541650, guid: 99279f317c194c04f971ee138bd9f00b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1220824139}
+    - target: {fileID: 1322193561758541650, guid: 99279f317c194c04f971ee138bd9f00b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: recordsOff
+      objectReference: {fileID: 0}
+    - target: {fileID: 1322193561758541650, guid: 99279f317c194c04f971ee138bd9f00b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Camera1, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 1534936391600711985, guid: 99279f317c194c04f971ee138bd9f00b,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -16497,13 +16522,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7192503772555619805, guid: 99279f317c194c04f971ee138bd9f00b,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7192503772555619805, guid: 99279f317c194c04f971ee138bd9f00b,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 425547458}
+      objectReference: {fileID: 1220824139}
     - target: {fileID: 7192503772555619805, guid: 99279f317c194c04f971ee138bd9f00b,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
+      value: records
+      objectReference: {fileID: 0}
+    - target: {fileID: 7192503772555619805, guid: 99279f317c194c04f971ee138bd9f00b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Camera1, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7220219104374497770, guid: 99279f317c194c04f971ee138bd9f00b,
         type: 3}
@@ -16527,6 +16562,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99279f317c194c04f971ee138bd9f00b, type: 3}
+--- !u!1 &1714115649 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8624860716215140537, guid: 99279f317c194c04f971ee138bd9f00b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1714115648}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1714115650 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7720271803333091209, guid: 99279f317c194c04f971ee138bd9f00b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1714115648}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1803711468
 PrefabInstance:
   m_ObjectHideFlags: 0
