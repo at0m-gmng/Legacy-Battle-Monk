@@ -17,10 +17,8 @@ public class Camera1 : MonoBehaviour
     [SerializeField] GameObject androidControl;
     [SerializeField] GameObject recordsTable;
     [SerializeField] GameObject pauseBattons;
-    
-    private void Start() {
-        
-    }
+    // [SerializeField] GameObject diePanelInputWindow;
+
 
     private void Update() {
         pos = player.position;
@@ -32,6 +30,8 @@ public class Camera1 : MonoBehaviour
     }
 
     private void Awake() {
+        // inputWindow = transform.Find("/DieMenu/InputWindow").GetComponent<GameObject>();
+
         recordsTable.SetActive(false);
         referencePanel.SetActive(false);
         pausePanel.SetActive(false);
@@ -43,6 +43,7 @@ public class Camera1 : MonoBehaviour
     public void SetPause() {
         pausePanel.SetActive(true);
         Time.timeScale = 0;
+
     }
 
     public void PauseOff() {
@@ -79,6 +80,9 @@ public class Camera1 : MonoBehaviour
         Time.timeScale = 0;
         diePanel.SetActive(true);
         androidControl.SetActive(false);
+        // if (PlayerController.lives < 1) {
+        //     diePanelButtons.SetActive(false);
+        // }
     }
 
     private void LevelEnding() {
@@ -90,6 +94,7 @@ public class Camera1 : MonoBehaviour
 
     public void Select(int index) {
         PauseOff();
+        // diePanelButtons.SetActive(true);
         if(PlayerController.lives < 1) {
             Collect.score = 0;
         }

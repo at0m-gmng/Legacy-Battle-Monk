@@ -10047,6 +10047,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6283ce6bcdc1f3640a82ee4917d5b3ef, type: 3}
+--- !u!1 &2057593730 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 605016400902425434, guid: 9339fd8761afb12419a85357b3fb922e,
+    type: 3}
+  m_PrefabInstance: {fileID: 6037389744508250699}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2068227624 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4147828689267226773, guid: 9339fd8761afb12419a85357b3fb922e,
+    type: 3}
+  m_PrefabInstance: {fileID: 6037389744508250699}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2101501098 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1399957465573065201, guid: 9340834a56001aa4c8546cc27306b539,
@@ -10163,6 +10175,11 @@ PrefabInstance:
       objectReference: {fileID: 1312586272}
     - target: {fileID: 1399957465573065201, guid: 9340834a56001aa4c8546cc27306b539,
         type: 3}
+      propertyPath: inputWindow
+      value: 
+      objectReference: {fileID: 2068227624}
+    - target: {fileID: 1399957465573065201, guid: 9340834a56001aa4c8546cc27306b539,
+        type: 3}
       propertyPath: pauseBattons
       value: 
       objectReference: {fileID: 128446008}
@@ -10186,6 +10203,16 @@ PrefabInstance:
       propertyPath: referencePanel
       value: 
       objectReference: {fileID: 1362241339}
+    - target: {fileID: 1399957465573065201, guid: 9340834a56001aa4c8546cc27306b539,
+        type: 3}
+      propertyPath: diePanelButtons
+      value: 
+      objectReference: {fileID: 2057593730}
+    - target: {fileID: 1399957465573065201, guid: 9340834a56001aa4c8546cc27306b539,
+        type: 3}
+      propertyPath: diePanelInputWindow
+      value: 
+      objectReference: {fileID: 2068227624}
     - target: {fileID: 1399957465573065203, guid: 9340834a56001aa4c8546cc27306b539,
         type: 3}
       propertyPath: m_Name

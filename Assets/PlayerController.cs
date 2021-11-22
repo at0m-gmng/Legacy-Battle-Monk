@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask Ground;
     public LayerMask GroundStatic;
 
-    public static bool keyboard = false; //клавиатура не подкл, подкл джойстик
+    public static bool keyboard = true; //клавиатура не подкл, подкл джойстик
     [SerializeField] GameObject androidControl;
     public Joystick joystick;
 
