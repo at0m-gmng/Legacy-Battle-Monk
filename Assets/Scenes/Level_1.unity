@@ -10053,12 +10053,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 6037389744508250699}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2068227624 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4147828689267226773, guid: 9339fd8761afb12419a85357b3fb922e,
-    type: 3}
-  m_PrefabInstance: {fileID: 6037389744508250699}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2101501098 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1399957465573065201, guid: 9340834a56001aa4c8546cc27306b539,
@@ -10177,7 +10171,7 @@ PrefabInstance:
         type: 3}
       propertyPath: inputWindow
       value: 
-      objectReference: {fileID: 2068227624}
+      objectReference: {fileID: 0}
     - target: {fileID: 1399957465573065201, guid: 9340834a56001aa4c8546cc27306b539,
         type: 3}
       propertyPath: pauseBattons
@@ -10212,7 +10206,7 @@ PrefabInstance:
         type: 3}
       propertyPath: diePanelInputWindow
       value: 
-      objectReference: {fileID: 2068227624}
+      objectReference: {fileID: 0}
     - target: {fileID: 1399957465573065203, guid: 9340834a56001aa4c8546cc27306b539,
         type: 3}
       propertyPath: m_Name

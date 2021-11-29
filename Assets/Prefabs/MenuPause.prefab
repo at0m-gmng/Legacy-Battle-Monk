@@ -1328,8 +1328,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a88e933f516d4534780452d503bf70d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entryContainer: {fileID: 0}
-  entryTemplate: {fileID: 0}
+  _scoreTable:
+    ScoresList: []
+  _scoreTable1:
+    ScoresList: []
 --- !u!1 &6851702182439146204
 GameObject:
   m_ObjectHideFlags: 0
@@ -1416,7 +1418,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7962472935782532252}
-  - component: {fileID: 6482025438133619434}
+  - component: {fileID: 1824157041422818858}
   m_Layer: 0
   m_Name: records
   m_TagString: Untagged
@@ -1450,7 +1452,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0.0019717}
   m_SizeDelta: {x: 1280, y: 720}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &6482025438133619434
+--- !u!114 &1824157041422818858
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1462,8 +1464,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a88e933f516d4534780452d503bf70d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entryContainer: {fileID: 660120084608183222}
-  entryTemplate: {fileID: 6633489981497933521}
+  _scoreTable:
+    ScoresList: []
+  _scoreTable1:
+    ScoresList: []
 --- !u!1 &7756898234092596696
 GameObject:
   m_ObjectHideFlags: 0
