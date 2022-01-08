@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+// using UnityEngine.Advertisements;
 
 public class Camera1 : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class Camera1 : MonoBehaviour
     [SerializeField] GameObject androidControl;
     [SerializeField] GameObject recordsTable;
     [SerializeField] GameObject pauseBattons;
+    
+    [SerializeField] GameObject adsBanner;
     // [SerializeField] GameObject diePanelInputWindow;
 
 
@@ -43,12 +46,13 @@ public class Camera1 : MonoBehaviour
     public void SetPause() {
         pausePanel.SetActive(true);
         Time.timeScale = 0;
-
+        AdsManager.ShowBanner(true);
     }
 
     public void PauseOff() {
         pausePanel.SetActive(false);
         Time.timeScale = 1;
+        AdsManager.ShowBanner(false);
     }
 
     public void records() {
