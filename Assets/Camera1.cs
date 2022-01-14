@@ -45,12 +45,14 @@ public class Camera1 : MonoBehaviour
 
     public void SetPause() {
         pausePanel.SetActive(true);
+        androidControl.SetActive(false);
         Time.timeScale = 0;
         AdsManager.ShowBanner(true);
     }
 
     public void PauseOff() {
         pausePanel.SetActive(false);
+        androidControl.SetActive(true);
         Time.timeScale = 1;
         AdsManager.ShowBanner(false);
     }
@@ -92,6 +94,7 @@ public class Camera1 : MonoBehaviour
     private void LevelEnding() {
         if(!GameObject.Find("Angel") ) {
             levelNextPanel.SetActive(true);
+            androidControl.SetActive(false);
             Time.timeScale = 0;
         } 
     }
