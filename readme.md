@@ -1,4 +1,4 @@
-Исходники находятся в папку Assets
+Исходники находятся в папке Assets
 <h1 align="center"> Battle Monk </h1>
 <div align="center">
     <img src="main_menu.png" >
